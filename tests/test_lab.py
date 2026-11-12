@@ -92,6 +92,7 @@ class ProviderTests(unittest.TestCase):
         result = client.complete(messages, [])
         self.assertEqual(result['finish'], 'stop')
         self.assertEqual(len(post.call_args.args[2]['messages'][-1]['content']), 2)
+        self.assertEqual(post.call_args.args[2]['max_tokens'], 4096)
 
 class FullTrajectoryTests(unittest.TestCase):
     def test_two_tools_and_final_with_real_snapshot(self):
